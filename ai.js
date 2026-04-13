@@ -9,13 +9,19 @@
 // ═══════════════════════════════════════════════════════════
 
 // --- Constants (single source of truth) ---
-// INFRA-103: Model choice reviewed 2026-04-01.
-// Haiku 4.5 confirmed for all worker AI calls (audits, reports, diagnostics).
-// Cost: ~$0.25/MTok in, ~$1.25/MTok out. Fast (sub-second) for CF Workers.
-// Upgrade path: pass { model: 'claude-sonnet-4-6-20250514' } to callAI() per-call if needed.
-export const AI_MODEL = 'claude-haiku-4-5-20251001';
+// Platform Zero: Sonnet 4.6 is the minimum model for all worker AI calls.
+// Haiku retired from worker fleet. Opus reserved for FINCH Architect sessions only.
+export const AI_MODEL = 'claude-sonnet-4-6-20250514';
 export const ANTHROPIC_VERSION = '2023-06-01';
-export const COST_PER_TOKEN = 0.00000025;
+
+// Per-model cost tracking — FinOps uses these for accurate P&L
+export const MODEL_COSTS = {
+  'claude-haiku-4-5-20251001':  { input: 0.0000008,  output: 0.000004  },
+  'claude-sonnet-4-6-20250514': { input: 0.000003,   output: 0.000015  },
+  'claude-opus-4-6-20250514':   { input: 0.000015,   output: 0.000075  },
+};
+// Legacy constant — kept for backwards compat until all workers migrate to MODEL_COSTS
+export const COST_PER_TOKEN = 0.000003;
 
 // AI Gateway URL — all Anthropic calls route through this
 // Format: https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/{provider}

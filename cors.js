@@ -56,8 +56,4 @@ export function handleOptions(request) {
 // Workers use this to skip API key auth for portal requests
 export const PORTAL_ORIGINS = [
   ...ALLOWED_ORIGINS,
-  'https://aeo-devportal.pages.dev',
-  'http://localhost',
-  'http://localhost:8080',
-  'http://localhost:5173',
 ];
