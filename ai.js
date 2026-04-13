@@ -9,9 +9,9 @@
 // ═══════════════════════════════════════════════════════════
 
 // --- Constants (single source of truth) ---
-// Platform Zero: Sonnet 4.6 is the minimum model for all worker AI calls.
-// Haiku retired from worker fleet. Opus reserved for FINCH Architect sessions only.
-export const AI_MODEL = 'claude-sonnet-4-6-20250514';
+// Platform Zero: Haiku 4.5 is the default for most workers (adequate for the task).
+// Catalyst + Forge override to Sonnet per-call. FINCH DO overrides to Opus per-call.
+export const AI_MODEL = 'claude-haiku-4-5-20251001';
 export const ANTHROPIC_VERSION = '2023-06-01';
 
 // Per-model cost tracking — FinOps uses these for accurate P&L
@@ -20,8 +20,8 @@ export const MODEL_COSTS = {
   'claude-sonnet-4-6-20250514': { input: 0.000003,   output: 0.000015  },
   'claude-opus-4-6-20250514':   { input: 0.000015,   output: 0.000075  },
 };
-// Legacy constant — kept for backwards compat until all workers migrate to MODEL_COSTS
-export const COST_PER_TOKEN = 0.000003;
+// Legacy constant — Haiku 4.5 blended average for workers using AI_MODEL default
+export const COST_PER_TOKEN = 0.0000008;
 
 // AI Gateway URL — all Anthropic calls route through this
 // Format: https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/{provider}
