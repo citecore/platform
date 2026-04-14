@@ -7,12 +7,12 @@
 // ═══════════════════════════════════════════════════════════
 
 const ALLOWED_ORIGINS = [
-  // CiteCore.ai — Platform Zero (dev-admin/dev-partner killed 2026-04-14)
+  // CiteCore.ai — Platform Zero
   'https://admin.citecore.ai',
-  'https://dev-adminv2.citecore.ai',
+  'https://dev-admin.citecore.ai',
   'https://admin-v2-9ke.pages.dev',
   'https://partner.citecore.ai',
-  'https://dev-partnerv2.citecore.ai',
+  'https://dev-partner.citecore.ai',
   'https://citecore.ai',
   'https://www.citecore.ai',
   'https://dev.citecore.ai',
