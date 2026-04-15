@@ -12,14 +12,14 @@
 // INFRA-44 Phase 1: Sonnet 4.6 is the fleet default pre-launch.
 // Supersedes INFRA-351 (Opus-everywhere). FINCH DO overrides to Opus per-call
 // via FINCH_MODEL in finch/wrangler.toml.
-export const AI_MODEL = 'claude-sonnet-4-6-20250514';
+export const AI_MODEL = 'claude-sonnet-4-6';
 export const ANTHROPIC_VERSION = '2023-06-01';
 
 // Per-model cost tracking — FinOps uses these for accurate P&L
 export const MODEL_COSTS = {
   'claude-haiku-4-5-20251001':  { input: 0.0000008,  output: 0.000004  },
-  'claude-sonnet-4-6-20250514': { input: 0.000003,   output: 0.000015  },
-  'claude-opus-4-6-20250514':   { input: 0.000015,   output: 0.000075  },
+  'claude-sonnet-4-6':          { input: 0.000003,   output: 0.000015  },
+  'claude-opus-4-6':            { input: 0.000015,   output: 0.000075  },
 };
 // Blended per-token cost for workers using AI_MODEL default (Sonnet 4.6 avg).
 export const COST_PER_TOKEN = 0.000009;
