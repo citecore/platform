@@ -43,7 +43,7 @@ export function createLogger(workerName, env) {
     debug: (event, message, opts) => write('debug', event, message, opts),
 
     // Convenience: log API token usage
-    async usage(processName, clientId, { input = 0, output = 0, model = 'claude-sonnet-4-20250514', cost = null } = {}) {
+    async usage(processName, clientId, { input = 0, output = 0, model = 'claude-sonnet-4-6-20250514', cost = null } = {}) {
       if (!LOGDB) return;
       const total = input + output;
       const estimate = cost ?? total * 0.00000025;

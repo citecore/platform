@@ -9,10 +9,10 @@
 // ═══════════════════════════════════════════════════════════
 
 // --- Constants (single source of truth) ---
-// Platform Zero (pre-launch, 2026-04-14): every worker runs Opus 4.6.
-// NO Sonnet overrides. NO Haiku overrides. FINCH DO already Opus via FINCH_MODEL.
-// Post-launch we revisit — not before.
-export const AI_MODEL = 'claude-opus-4-6';
+// INFRA-44 Phase 1: Sonnet 4.6 is the fleet default pre-launch.
+// Supersedes INFRA-351 (Opus-everywhere). FINCH DO overrides to Opus per-call
+// via FINCH_MODEL in finch/wrangler.toml.
+export const AI_MODEL = 'claude-sonnet-4-6-20250514';
 export const ANTHROPIC_VERSION = '2023-06-01';
 
 // Per-model cost tracking — FinOps uses these for accurate P&L
@@ -21,8 +21,8 @@ export const MODEL_COSTS = {
   'claude-sonnet-4-6-20250514': { input: 0.000003,   output: 0.000015  },
   'claude-opus-4-6-20250514':   { input: 0.000015,   output: 0.000075  },
 };
-// Legacy constant — Opus 4.6 input cost
-export const COST_PER_TOKEN = 0.000015;
+// Blended per-token cost for workers using AI_MODEL default (Sonnet 4.6 avg).
+export const COST_PER_TOKEN = 0.000009;
 
 // AI Gateway URL — all Anthropic calls route through this
 // Format: https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/{provider}
